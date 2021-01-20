@@ -1,0 +1,140 @@
+/* ***** HEADER ***** */
+
+.grid-header-style {
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(275deg, rgba(78,189,208,1) 0%, rgba(100,69,182,1) 95%);
+}
+
+header {
+    width: 100%;
+    
+    color: white;
+
+    text-align: center;
+    align-content: center;
+}
+
+header h1 {
+    font-weight: 700;
+    font-size: 3.4rem;
+}
+
+header h2 {
+    font-weight: normal;
+    font-size: 2.1rem;
+
+    margin-bottom: 3.4rem;
+}
+
+header a {
+    font-weight: 700;
+    font-size: 1.3rem;
+
+    padding: 1.3rem 8.9rem;
+
+    color: #4ebdd0;
+    border: 1px solid white;
+    border-radius: 2.1rem;
+    background: white;
+    opacity: 0.4;
+
+    text-decoration: none;
+    transition: 500ms;
+}
+
+header a:hover {
+    opacity: 1;
+}
+
+/* ***** MAIN ***** */
+
+.grid-main-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.informations {
+    text-align: center;
+}
+
+.informations h2 {
+    font-size: 3.4rem;
+}
+
+.informations p {
+    font-size: 1.4rem;
+}
+
+section:first-child div {
+    padding-bottom: 1.3rem;
+}
+
+section:last-child div {
+    padding-top: 1.3rem;
+}
+
+/* ***** FOOTER ***** */
+
+footer {
+    position: absolute;
+    bottom: 0;
+
+    width: 50%;
+    text-align: center;
+}
+
+/* ***** MOBILE ***** */
+
+@media (max-width: 570px) {
+    #page-landing {
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1fr 25px;
+
+        grid-template-areas:
+        "main"
+        "header"
+        "footer";
+    }
+
+    footer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width:490px) {
+    header h1 {
+        font-size: clamp(2.1rem, 8vw, 3.4rem);
+    }
+
+    header h2 {
+        font-size: clamp(1.3rem, 4vw, 2.1rem);
+    }
+}
+
+@media (max-width:250px) {
+    header h1 {
+        font-size: clamp(1.3rem, 6vw, 2.1rem);
+    }
+
+    header h2 {
+        font-size: clamp(0.8rem, 3vw, 1.3rem);
+    }
+
+    header a {
+        padding: 0.8rem 2.1rem;
+    }
+
+    footer {
+        font-size: clamp(0.8rem, 3vw, 1.3rem);
+    }
+}

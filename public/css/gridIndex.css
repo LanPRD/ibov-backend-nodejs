@@ -1,0 +1,24 @@
+#page-landing {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 1fr 25px;
+    grid-template-areas:
+    "main header"
+    "main header"
+    "footer header";
+}
+
+.grid-header{
+    grid-area: header;
+}
+
+.grid-main {
+    grid-area: main;
+}
+
+.grid-footer {
+    grid-area: footer;
+}
