@@ -24,7 +24,7 @@
             <a href="/">Back</a>
             <nav>
                 <ul>
-                    <li>STATISTICS</li>
+                    <li><a href="/statics"> STATISTICS</a></li>
                     <li>STOCKS</li>
                     <li>FIIs</li>
                 </ul>
@@ -32,10 +32,71 @@
         </div>
 
         <div class="grid-main grid-main-style">
+
             <main>
-                <h1>Sorry! I'm still working on this API!</h1>
-                <p>But a lot of JS code are ready! But it's a surprise!</p>
-                <p>So, while I'm working, enjoy the HTML and CSS (:</p>
+                <h1>TOP STOCKS</h1>
+                <section class="top-stocks">
+                    <div class="dy widthTop">
+                        <h1>Best D.Y</h1>
+                        <p>But a lot of JS code are ready! But it's a surprise!</p>
+                        <p>So, while I'm working, enjoy the HTML and CSS (:</p>
+                    </div>
+                    <div class="roe widthTop">
+                        <h1>Highest ROE</h1>
+                        <p>But a lot of JS code are ready! But it's a surprise!</p>
+                    </div>
+                    <div class="roa widthTop">
+                        <h1>Best ROA</h1>
+                        <p>But a lot of JS code are ready! But it's a surprise!</p>
+                    </div>
+                </section>
+
+                <h1>TOP FIIs</h1>
+                <section class="top-fiis">
+                    <div class="dy widthTop" >
+                        <h1>Best D.Y</h1>
+
+                        {{#each fiiTopDy}}
+                        <div class="top-section">
+                            <p>
+                                <span>{{ this.TICKER }}</span>
+                                <span>{{ this.PRECO }}</span>
+                                <span>{{ this.DY }}</span>
+                            </p>
+                        </div>
+                        {{/each}}
+
+                    </div>
+                    <div class="lowest-price widthTop">
+                        <h1>Lowest Price</h1>
+
+                        {{#each fiiTopPrice}}
+                        <div class="top-section">
+                            <p>
+                                <span>{{ this.TICKER }}</span>
+                                <span>{{ this.PRECO }}</span>
+                                <span>{{ this.DY }}</span>
+                            </p>
+                        </div>
+                        {{/each}}
+
+                    </div>
+                    <div class="pvp widthTop">
+                        <h1>Best P/VP</h1>
+
+                        {{#each fiiTopPvp}} 
+                        <div class="top-section">
+                            <p>
+                                <span>{{ this.TICKER }}</span>
+                                <span>{{ this.PRECO }}</span>
+                                <span>{{ this.PVP }}</span>
+                            </p>
+                        </div>
+                        {{/each}}
+
+                        </div>
+                </section>
+
             </main>
         </div>
 

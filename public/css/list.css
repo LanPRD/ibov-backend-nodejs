@@ -1,7 +1,7 @@
 /* **** HEADER ***** */
 
 .grid-header-style {
-    background: linear-gradient(275deg, rgba(78,189,208,1) 0%, rgba(100,69,182,1) 95%);
+    background: linear-gradient(275deg, rgba(78,189,208,1) 0%, rgba(100,69,182,1) 100%);
 }
 
 header {
@@ -30,7 +30,7 @@ header h1 {
     width: 60%;
 }
 
-.grid-nav-style a {
+.grid-nav-style > a {
     text-decoration: none;
     color: white;
     font-weight: 700;
@@ -68,15 +68,22 @@ header h1 {
 
 .grid-nav-style li {
     width: 18%;
-    display: flex;
 
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .grid-nav-style li:hover {
     cursor: pointer;
+    text-decoration: underline;
 }
+
+.grid-nav-style li a {
+    text-decoration: none;
+    color: white;
+}
+
 /* **** MAIN ***** */
 
 .grid-main-style {
@@ -91,6 +98,39 @@ header h1 {
     width: 60%;
 }
 
+.grid-main-style section {
+    display: flex;
+    
+    justify-content: space-between;
+}
+
+.grid-main-style section h1{
+    font-size: 2.1rem;
+}
+
+.top-stocks,
+.top-fiis {
+    height: 40%;
+}
+
+.top-stocks h1,
+.top-fiis h1 {
+    margin: 0 0 0.8rem 0;
+}
+
+.widthTop {
+    padding: 0.8rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    width: 32%;
+}
+
+.top-section {
+    padding: 0.5rem 1.3rem;
+}
+
+.top-section p span {
+    margin: 0 0.8rem 0 0;
+}
 
 /* **** FOOTER ***** */
 

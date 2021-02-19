@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const convertFile = require('./convertFile.js');
+const convertFile = require('../public/scripts/convertFile.js');
 const pages = require('./pages.js')
 
 app
@@ -13,6 +13,6 @@ app
     .get('/', pages.index)
     .get('/list', pages.list)
 
-    .get('/acoes', convertFile.datas)
+    .get('/statics', convertFile.datas)
 
     .listen(3000, console.log('Server is running! (:'))
