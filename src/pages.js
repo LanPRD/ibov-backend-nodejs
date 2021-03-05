@@ -12,8 +12,8 @@ const attr = {
 const dataCsv = {
     stocks: async function() {
         try {
-            const acoes = await csv(attr).fromFile(csvAcoes);
-            return acoes;
+            const stocks = await csv(attr).fromFile(csvAcoes);
+            return stocks;
         } catch (err) {
             console.error(err);
         }
@@ -31,11 +31,11 @@ const dataCsv = {
 
 module.exports = {
     
-    async index(req, res) { 
+    async index(req, res) {
         const totalFii = (await dataCsv.fii()).length;
-        const totalAcoes = (await dataCsv.stocks()).length;
+        const totalStocks = (await dataCsv.stocks()).length;
 
-        return res.render('index', { totalFii: totalFii, totalAcoes: totalAcoes });
+        return res.render('index', { totalFii: totalFii, totalAcoes: totalStocks });
     },
 
     async list(req, res) {
@@ -43,9 +43,9 @@ module.exports = {
         const fiiTopPrice = JSON.parse(convertFile.JSONArray.fiiTopPrice(await dataCsv.fii()));
         const fiiTopPvp = JSON.parse(convertFile.JSONArray.fiiTopPvp(await dataCsv.fii()));
         
-        // const stocksTopDy = JSON.parse(convertFile.JSONArray.stocksTopDy(await dataCsv.stocks()));
-        // const stocksTopPrice = JSON.parse(convertFile.JSONArray.stocksTopPrice(await dataCsv.stocks()));
-        // const stocksTopPvp = JSON.parse(convertFile.JSONArray.stocksTopPvp(await dataCsv.stocks()));
+        const stockTopDy = JSON.parse(convertFile.JSONArray.stockTopDy(await dataCsv.stocks()));
+        const stockTopRoe = JSON.parse(convertFile.JSONArray.stockTopRoe(await dataCsv.stocks()));
+        const stockTopRoa = JSON.parse(convertFile.JSONArray.stockTopRoa(await dataCsv.stocks()));
 
         function formatKey(fii) {
 
@@ -58,15 +58,43 @@ module.exports = {
 
         };
 
+        formatKey(fiiTopDy);
+        formatKey(fiiTopPrice);
         formatKey(fiiTopPvp);
 
         return res.render('list', {
             fiiTopDy: fiiTopDy,
             fiiTopPrice: fiiTopPrice,
             fiiTopPvp: fiiTopPvp,
-            // stocksTopDy: stocksTopDy,
-            // stocksTopPrice: stocksTopPrice,
-            // stocksTopPvp: stocksTopPvp
+            stockTopDy: stockTopDy,
+            stockTopRoe: stockTopRoe,
+            stockTopRoa: stockTopRoa
         });
+    },
+
+    async stocks(req, res) {
+        const stocksList = await dataCsv.stocks();
+
+        return res.render('stocks', { stockList: stocksList });
+    },
+
+    async fiis(req, res) {
+        const fiisList = await dataCsv.stocks();
+        console.log(fiisList);
+
+        function formatKey(fii) {
+
+            totalLength = fii.length;
+
+            for (let i = 0; i < totalLength; i++) {
+                fii[i].PVP = fii[i]['P/VP'];
+                delete fii[i]['P/VP'];
+            }
+
+        };
+
+        formatKey(fiisList);
+
+        return res.render('fiis', { fiiList: fiisList });
     }
 }

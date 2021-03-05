@@ -125,11 +125,13 @@ header h1 {
 }
 
 .top-section {
-    padding: 0.5rem 1.3rem;
+    width: 100%;
+    text-align: center;
 }
 
-.top-section p span {
-    margin: 0 0.8rem 0 0;
+
+.top-section td {
+    padding: 0.2rem 1.3rem;
 }
 
 /* **** FOOTER ***** */

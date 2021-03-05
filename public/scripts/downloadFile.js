@@ -6,7 +6,15 @@ require("request")
   .on("error", error => console.log(error))
   .pipe(require("fs").createWriteStream("./src/database/acoes.csv"));
 
-  require("request")
+require("request")
   .get(urlFii)
   .on("error", error => console.log(error))
   .pipe(require("fs").createWriteStream("./src/database/fii.csv"));
+
+module.exports = {
+  
+  requireCsv() {
+
+  }
+
+}

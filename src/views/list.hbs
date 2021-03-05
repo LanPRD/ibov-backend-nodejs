@@ -2,8 +2,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FundamentAções</title>
+    <title>Tops | FundamentAções</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap" rel="stylesheet">
 
@@ -25,8 +26,8 @@
             <nav>
                 <ul>
                     <li><a href="/statics"> STATISTICS</a></li>
-                    <li>STOCKS</li>
-                    <li>FIIs</li>
+                    <li><a href="/stocks"> STOCKS</a></li>
+                    <li><a href="/fiis"> FIIs</a></li>
                 </ul>
             </nav>
         </div>
@@ -36,65 +37,144 @@
             <main>
                 <h1>TOP STOCKS</h1>
                 <section class="top-stocks">
+
                     <div class="dy widthTop">
                         <h1>Best D.Y</h1>
-                        <p>But a lot of JS code are ready! But it's a surprise!</p>
-                        <p>So, while I'm working, enjoy the HTML and CSS (:</p>
+
+                        <table class="top-section">
+                            <thead>
+                                <th>Ticker</th>
+                                <th>Price</th>
+                                <th>DY</th>
+                            </thead>
+                            <tbody>
+                            {{#each stockTopDy}}
+                            <tr>
+                                <td>{{ this.TICKER }}</td>
+                                <td>{{ this.PRECO }}</td>
+                                <td>{{ this.DY }}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
                     </div>
+
                     <div class="roe widthTop">
-                        <h1>Highest ROE</h1>
-                        <p>But a lot of JS code are ready! But it's a surprise!</p>
+                        <h1>Best ROE</h1>
+
+                        <table class="top-section">
+                            <thead>
+                                <th>Ticker</th>
+                                <th>Price</th>
+                                <th>ROE</th>
+                            </thead>
+                            <tbody>
+                            {{#each stockTopRoe}}
+                            <tr>
+                                <td>{{ this.TICKER }}</td>
+                                <td>{{ this.PRECO }}</td>
+                                <td>{{ this.ROE }}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
                     </div>
+
                     <div class="roa widthTop">
                         <h1>Best ROA</h1>
-                        <p>But a lot of JS code are ready! But it's a surprise!</p>
+
+                        <table class="top-section">
+                            <thead>
+                                <th>Ticker</th>
+                                <th>Price</th>
+                                <th>ROA</th>
+                            </thead>
+                            <tbody>
+                            {{#each stockTopRoa}}
+                            <tr>
+                                <td>{{ this.TICKER }}</td>
+                                <td>{{ this.PRECO }}</td>
+                                <td>{{ this.ROA }}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
                     </div>
+
                 </section>
 
                 <h1>TOP FIIs</h1>
                 <section class="top-fiis">
+
                     <div class="dy widthTop" >
                         <h1>Best D.Y</h1>
 
-                        {{#each fiiTopDy}}
-                        <div class="top-section">
-                            <p>
-                                <span>{{ this.TICKER }}</span>
-                                <span>{{ this.PRECO }}</span>
-                                <span>{{ this.DY }}</span>
-                            </p>
-                        </div>
-                        {{/each}}
-
+                        <table class="top-section">
+                            <thead>
+                                <th>Ticker</th>
+                                <th>Price</th>
+                                <th>DY</th>
+                                <th>PVP</th>
+                            </thead>
+                            <tbody>
+                            {{#each fiiTopDy}}
+                            <tr>
+                                <td>{{ this.TICKER }}</td>
+                                <td>{{ this.PRECO }}</td>
+                                <td>{{ this.DY }}</td>
+                                <td>{{ this.PVP }}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
                     </div>
+
                     <div class="lowest-price widthTop">
                         <h1>Lowest Price</h1>
 
-                        {{#each fiiTopPrice}}
-                        <div class="top-section">
-                            <p>
-                                <span>{{ this.TICKER }}</span>
-                                <span>{{ this.PRECO }}</span>
-                                <span>{{ this.DY }}</span>
-                            </p>
-                        </div>
-                        {{/each}}
-
+                        <table class="top-section">
+                            <thead>
+                                <th>Ticker</th>
+                                <th>Price</th>
+                                <th>DY</th>
+                                <th>PVP</th>
+                            </thead>
+                            <tbody>
+                            {{#each fiiTopPrice}}
+                            <tr>
+                                <td>{{ this.TICKER }}</td>
+                                <td>{{ this.PRECO }}</td>
+                                <td>{{ this.DY }}</td>
+                                <td>{{ this.PVP }}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
                     </div>
+
                     <div class="pvp widthTop">
                         <h1>Best P/VP</h1>
 
-                        {{#each fiiTopPvp}} 
-                        <div class="top-section">
-                            <p>
-                                <span>{{ this.TICKER }}</span>
-                                <span>{{ this.PRECO }}</span>
-                                <span>{{ this.PVP }}</span>
-                            </p>
-                        </div>
-                        {{/each}}
+                        <table class="top-section">
+                            <thead>
+                                <th>Ticker</th>
+                                <th>Price</th>
+                                <th>PVP</th>
+                                <th>DY</th>
+                            </thead>
+                            <tbody>
+                            {{#each fiiTopPvp}}
+                            <tr>
+                                <td>{{ this.TICKER }}</td>
+                                <td>{{ this.PRECO }}</td>
+                                <td>{{ this.DY }}</td>
+                                <td>{{ this.PVP }}</td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
 
-                        </div>
                 </section>
 
             </main>

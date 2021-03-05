@@ -17,6 +17,22 @@ const JSONArray = {
 
         return JSONArray.topRatios(res, 'DY');
     },
+
+    orderByROE(array) {
+        const res = array
+                        .sort((a, b) => 
+                        parseFloat((a.ROE).replace(',', '.')) - parseFloat((b.ROE).replace(',', '.')));
+
+        return JSONArray.topRatios(res, 'ROE');
+    },
+
+    orderByROA(array) {
+        const res = array
+                        .sort((a, b) => 
+                        parseFloat((a.ROA).replace(',', '.')) - parseFloat((b.ROA).replace(',', '.')));
+
+        return JSONArray.topRatios(res, 'ROA');
+    },
     
     orderByPrice(array) {
         const res = array
@@ -61,6 +77,22 @@ const JSONArray = {
                     }
                 }
             }
+        
+        } else if (operator === 'ROE') {
+            
+            for (let i = stop; i < arrayLength; i++) {
+                finalJson.push(arrayReceived[i]);
+            }
+            
+            return JSON.stringify(finalJson.reverse());
+        
+        } else if (operator === 'ROA') {
+            
+            for (let i = stop; i < arrayLength; i++) {
+                finalJson.push(arrayReceived[i]);
+            }
+            
+            return JSON.stringify(finalJson.reverse());
             
         } else if (operator === 'PVP') {
             
@@ -82,6 +114,10 @@ const JSONArray = {
     fiiTopDy: function (fii) { return this.orderByDY(fii) },
     fiiTopPrice: function (fii) { return this.orderByPrice(fii) },
     fiiTopPvp: function (fii) { return this.removeNullPvp(fii) },
+
+    stockTopDy: function (stock) { return this.orderByDY(stock) },
+    stockTopRoe: function (stock) { return this.orderByROE(stock) },
+    stockTopRoa: function (stock) { return this.orderByROA(stock) },
 }
 
 module.exports = {
@@ -90,10 +126,10 @@ module.exports = {
     
     async datas(req, res) {
         try {
-            const acoes = await csv(attr).fromFile(csvAcoes);
+            const stock = await csv(attr).fromFile(csvAcoes);
             const fii = await csv(attr).fromFile(csvFii);
             
-            return res.send(JSONArray.fiiTopPvp(fii));
+            return res.send(JSONArray.stockTopRoa(stock));
         } catch (err) {
             console.log(err);
         }
