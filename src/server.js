@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const convertFile = require('../public/scripts/convertFile.js');
-const pages = require('./pages.js');
+const DownloadCsvFile = require('./services/DownloadCsvFile');
+
+const routes = require('./routes');
 
 app
     .use(express.static('public'))
@@ -10,11 +11,13 @@ app
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'hbs')
 
-    .get('/', pages.index)
-    .get('/list', pages.list)
-    .get('/stocks', pages.stocks)
-    .get('/fiis', pages.fiis)
+    .use(routes)
 
-    .get('/statics', convertFile.datas)
+    .listen(3000, async () => {
+        const downloadCsvFile = new DownloadCsvFile();
+        const promiseDownload = downloadCsvFile.run();
 
-    .listen(3000, console.log('Server is running! (:'));
+        console.log(promiseDownload);
+
+        console.log('Server is running! (:');
+    });

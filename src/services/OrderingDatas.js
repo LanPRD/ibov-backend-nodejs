@@ -1,12 +1,4 @@
-const csvAcoes = './src/database/acoes.csv';
-const csvFii = './src/database/fii.csv';
-
-const csv = require('csvtojson');
-const attr = {
-    noheader: false,
-    delimiter: ';'
-};
-
+const ConverterCsvFile = require('./ConverterCsvFile');
 
 const JSONArray = {
 
@@ -125,14 +117,11 @@ module.exports = {
     JSONArray,
     
     async datas(req, res) {
-        try {
-            const stock = await csv(attr).fromFile(csvAcoes);
-            const fii = await csv(attr).fromFile(csvFii);
-            
-            return res.send(JSONArray.stockTopRoa(stock));
-        } catch (err) {
-            console.log(err);
-        }
+        const converterCsvFile = new ConverterCsvFile();
+
+        const { stocksList } = await converterCsvFile.listDatas();
+        
+        return res.send(JSONArray.stockTopRoa(stocksList));
     }
 
 }

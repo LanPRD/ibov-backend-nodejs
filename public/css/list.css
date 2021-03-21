@@ -44,6 +44,8 @@ header h1 {
     padding: 1.3rem;
 
     opacity: 0.5;
+    
+    transition: opacity 0.2s;
 }
 
 .grid-nav-style a:hover {
