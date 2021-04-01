@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,32 +14,33 @@
     <link rel="stylesheet" href="../css/list.css">
     <link rel="shortcut icon" href="../images/favicon.png">
 </head>
+
 <body>
     <div id="page-landing">
-        <div class="grid-header grid-header-style">
+        <div class="grid-header">
             <header>
                 <h1>Stocks and FIIs</h1>
             </header>
         </div>
 
-        <div class="grid-nav grid-nav-style">
-            <a href="/">Back</a>
+        <div class="grid-nav">
             <nav>
                 <ul>
-                    <li><a href="/statistics"> STATISTICS</a></li>
-                    <li><a href="/stocks"> STOCKS</a></li>
-                    <li><a href="/fiis"> FIIs</a></li>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/statistics">STATISTICS</a></li>
+                    <li><a href="/stocks">STOCKS LIST</a></li>
+                    <li><a href="/fiis">FIIs LIST</a></li>
                 </ul>
             </nav>
         </div>
 
-        <div class="grid-main grid-main-style">
+        <div class="grid-main">
 
             <main>
                 <h1>TOP STOCKS</h1>
                 <section class="top-stocks">
 
-                    <div class="dy widthTop">
+                    <div class="dy">
                         <h1>Best D.Y</h1>
 
                         <table class="top-section">
@@ -48,18 +50,18 @@
                                 <th>DY</th>
                             </thead>
                             <tbody>
-                            {{#each stockTopDy}}
-                            <tr>
-                                <td>{{ this.TICKER }}</td>
-                                <td>{{ this.PRECO }}</td>
-                                <td>{{ this.DY }}</td>
-                            </tr>
-                            {{/each}}
+                                {{#each stockTopDy}}
+                                <tr>
+                                    <td>{{ this.TICKER }}</td>
+                                    <td>{{ this.PRECO }}</td>
+                                    <td>{{ this.DY }}</td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="roe widthTop">
+                    <div class="roe">
                         <h1>Best ROE</h1>
 
                         <table class="top-section">
@@ -69,18 +71,18 @@
                                 <th>ROE</th>
                             </thead>
                             <tbody>
-                            {{#each stockTopRoe}}
-                            <tr>
-                                <td>{{ this.TICKER }}</td>
-                                <td>{{ this.PRECO }}</td>
-                                <td>{{ this.ROE }}</td>
-                            </tr>
-                            {{/each}}
+                                {{#each stockTopRoe}}
+                                <tr>
+                                    <td>{{ this.TICKER }}</td>
+                                    <td>{{ this.PRECO }}</td>
+                                    <td>{{ this.ROE }}</td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="roa widthTop">
+                    <div class="roa">
                         <h1>Best ROA</h1>
 
                         <table class="top-section">
@@ -90,13 +92,13 @@
                                 <th>ROA</th>
                             </thead>
                             <tbody>
-                            {{#each stockTopRoa}}
-                            <tr>
-                                <td>{{ this.TICKER }}</td>
-                                <td>{{ this.PRECO }}</td>
-                                <td>{{ this.ROA }}</td>
-                            </tr>
-                            {{/each}}
+                                {{#each stockTopRoa}}
+                                <tr>
+                                    <td>{{ this.TICKER }}</td>
+                                    <td>{{ this.PRECO }}</td>
+                                    <td>{{ this.ROA }}</td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -106,7 +108,7 @@
                 <h1>TOP FIIs</h1>
                 <section class="top-fiis">
 
-                    <div class="dy widthTop" >
+                    <div class="dy">
                         <h1>Best D.Y</h1>
 
                         <table class="top-section">
@@ -114,22 +116,22 @@
                                 <th>Ticker</th>
                                 <th>Price</th>
                                 <th>DY</th>
-                                <th>PVP</th>
+                                <th>P/VP</th>
                             </thead>
                             <tbody>
-                            {{#each fiiTopDy}}
-                            <tr>
-                                <td>{{ this.TICKER }}</td>
-                                <td>{{ this.PRECO }}</td>
-                                <td>{{ this.DY }}</td>
-                                <td>{{ this.PVP }}</td>
-                            </tr>
-                            {{/each}}
+                                {{#each fiiTopDy}}
+                                <tr>
+                                    <td>{{ this.TICKER }}</td>
+                                    <td>{{ this.PRECO }}</td>
+                                    <td>{{ this.DY }}</td>
+                                    <td>{{ this.PVP }}</td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="lowest-price widthTop">
+                    <div class="lowest-price">
                         <h1>Lowest Price</h1>
 
                         <table class="top-section">
@@ -137,40 +139,40 @@
                                 <th>Ticker</th>
                                 <th>Price</th>
                                 <th>DY</th>
-                                <th>PVP</th>
+                                <th>P/VP</th>
                             </thead>
                             <tbody>
-                            {{#each fiiTopPrice}}
-                            <tr>
-                                <td>{{ this.TICKER }}</td>
-                                <td>{{ this.PRECO }}</td>
-                                <td>{{ this.DY }}</td>
-                                <td>{{ this.PVP }}</td>
-                            </tr>
-                            {{/each}}
+                                {{#each fiiTopPrice}}
+                                <tr>
+                                    <td>{{ this.TICKER }}</td>
+                                    <td>{{ this.PRECO }}</td>
+                                    <td>{{ this.DY }}</td>
+                                    <td>{{ this.PVP }}</td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="pvp widthTop">
+                    <div class="pvp">
                         <h1>Best P/VP</h1>
 
                         <table class="top-section">
                             <thead>
                                 <th>Ticker</th>
                                 <th>Price</th>
-                                <th>PVP</th>
                                 <th>DY</th>
+                                <th>P/VP</th>
                             </thead>
                             <tbody>
-                            {{#each fiiTopPvp}}
-                            <tr>
-                                <td>{{ this.TICKER }}</td>
-                                <td>{{ this.PRECO }}</td>
-                                <td>{{ this.DY }}</td>
-                                <td>{{ this.PVP }}</td>
-                            </tr>
-                            {{/each}}
+                                {{#each fiiTopPvp}}
+                                <tr>
+                                    <td>{{ this.TICKER }}</td>
+                                    <td>{{ this.PRECO }}</td>
+                                    <td>{{ this.DY }}</td>
+                                    <td>{{ this.PVP }}</td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
@@ -180,9 +182,10 @@
             </main>
         </div>
 
-        <div class="grid-footer grid-footer-style">
+        <div class="grid-footer">
             <footer>Developed by&nbsp<strong>Allan Prado</strong></footer>
         </div>
     </div>
 </body>
+
 </html>

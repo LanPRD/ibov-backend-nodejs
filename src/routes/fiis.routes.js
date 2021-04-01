@@ -18,7 +18,7 @@ fiisRouter.get('/', async (request, response) => {
 
     formatKey(fiiList);
 
-    return res.render("fiis", { fiiList: fiiList });
+    return response.render("fiis", { fiiList: fiiList });
 });
 
 module.exports = fiisRouter;

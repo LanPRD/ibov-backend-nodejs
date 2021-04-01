@@ -1,29 +1,29 @@
 #page-landing {
-    display: grid;
-    height: 100vh;
-    width: 100vw;
+  display: grid;
 
-    grid-template-columns: 100%;
-    grid-template-rows: 100px 75px 1fr 25px;
-    grid-template-areas:
+  height: 100vh;
+
+  grid-template-columns: 100%;
+  grid-template-rows: 100px 100px 1fr 25px;
+  grid-template-areas:
     "header"
     "nav"
     "main"
     "footer";
 }
 
-.grid-header{
-    grid-area: header;
+.grid-header {
+  grid-area: header;
 }
 
 .grid-nav {
-    grid-area: nav;
+  grid-area: nav;
 }
 
 .grid-main {
-    grid-area: main;
+  grid-area: main;
 }
 
 .grid-footer {
-    grid-area: footer;
+  grid-area: footer;
 }
