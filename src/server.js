@@ -1,23 +1,21 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const path = require('path');
-const DownloadCsvFile = require('./services/DownloadCsvFile');
+const path = require("path");
+const DownloadCsvFile = require("./services/DownloadCsvFile");
 
-const routes = require('./routes');
+const routes = require("./routes");
 
 app
-    .use(express.static('public'))
+  .use(express.static("public"))
 
-    .set('views', path.join(__dirname, 'views'))
-    .set('view engine', 'hbs')
+  .set("views", path.join(__dirname, "views"))
+  .set("view engine", "hbs")
 
-    .use(routes)
+  .use(routes)
 
-    .listen(3000, async () => {
-        const downloadCsvFile = new DownloadCsvFile();
-        const promiseDownload = downloadCsvFile.run();
+  .listen(3000, async () => {
+    const downloadCsvFile = new DownloadCsvFile();
+    await downloadCsvFile.run();
 
-        console.log(promiseDownload);
-
-        console.log('Server is running! (:');
-    });
+    console.log("Server is running! (:");
+  });
