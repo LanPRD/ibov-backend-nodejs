@@ -1,24 +1,26 @@
-const fiisRouter = require('express').Router();
+const fiisRouter = require("express").Router();
 
 const ConverterCsvFile = require("../services/ConverterCsvFile");
 
-fiisRouter.get('/', async (request, response) => {
-    const converterCsvFile = new ConverterCsvFile();
+fiisRouter.get("/", async (request, response) => {
+  const converterCsvFile = new ConverterCsvFile();
 
-    const { fiiList } = await converterCsvFile.listDatas();
+  const { fiiList } = await converterCsvFile.listDatas();
 
-    function formatKey(fii) {
-      totalLength = fii.length;
+  function formatKey(fii) {
+    totalLength = fii.length;
 
-      for (let i = 0; i < totalLength; i++) {
-        fii[i].PVP = fii[i]["P/VP"];
-        delete fii[i]["P/VP"];
-      }
+    for (let i = 0; i < totalLength; i++) {
+      fii[i].PVP = fii[i]["P/VP"];
+      delete fii[i]["P/VP"];
     }
+  }
 
-    formatKey(fiiList);
+  formatKey(fiiList);
 
-    return response.render("fiis", { fiiList: fiiList });
+  console.log(fiiList);
+
+  return response.render("fiis", { fiiList: fiiList });
 });
 
 module.exports = fiisRouter;

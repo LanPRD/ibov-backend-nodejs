@@ -71,64 +71,21 @@ li a {
   color: white;
 }
 
-/* **** MAIN ***** */
+/* **** GRID AND TABLE ***** */
 
-.grid-main {
-  margin-top: 24px;
-
-  display: flex;
-
-  justify-content: center;
-}
-
-section {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-section h1 {
-  font-size: 2.4rem;
-}
-
-section > div {
-  flex: 1;
-
-  padding: 8px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
-
-section div + div {
-  margin-left: 8px;
-}
-
-.top-stocks h1,
-.top-fiis h1 {
-  margin: 0 0 8px 0;
-}
-
-.top-stocks {
-  margin-bottom: 24px;
-}
-
-.top-section {
-  width: 100%;
+table {
+  margin: 0 auto;
+  min-width: 760px;
   text-align: center;
-  font-size: 1.2rem;
 }
 
-.top-section td {
-  padding: 2px 16px;
+th {
+  font-size: 14px;
+  padding-bottom: 8px;
 }
 
-/* **** FOOTER ***** */
-
-footer {
-  height: 100%;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+td {
+  padding-bottom: 2px;
 }
 
 /* **** MEDIAS ***** */

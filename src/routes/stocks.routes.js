@@ -1,13 +1,13 @@
-const stocksRouter = require('express').Router();
+const stocksRouter = require("express").Router();
 
 const ConverterCsvFile = require("../services/ConverterCsvFile");
 
-stocksRouter.get('/', async (request, response) => {
-    const converterCsvFile = new ConverterCsvFile();
+stocksRouter.get("/", async (request, response) => {
+  const converterCsvFile = new ConverterCsvFile();
 
-    const { stocksList } = await converterCsvFile.listDatas();
+  const { stocksList } = await converterCsvFile.listDatas();
 
-    return response.render("stocks", { stockList: stocksList });
+  return response.render("stocks", { stockList: stocksList });
 });
 
 module.exports = stocksRouter;

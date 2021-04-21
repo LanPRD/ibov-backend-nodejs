@@ -5,17 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stocks | FundamentAções</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/gridList.css" />
+    <link rel="stylesheet" href="../css/fiiAndStock.css" />
+    
 </head>
 <body>
-    {{#each stockList}}
-    <p>
-        <span>{{ this.TICKER }}</span>
-        <span>{{ this.PRECO }}</span>
-        <span>{{ this.DY }}</span>
-        <span>{{ this.ROE }}</span>
-        <span>{{ this.ROA }}</span>
-        <span>{{ this.VPA }}</span>
-    </p>
-    {{/each}}
+  <div id="page-landing">
+
+      <div class="grid-header">
+        <header>
+          <h1>Stocks and FIIs</h1>
+        </header>
+      </div>
+
+      <div class="grid-nav">
+        <nav>
+          <ul>
+            <li><a href="/list">TOP LIST</a></li>
+            <li><a href="/statistics">STATISTICS</a></li>
+            <li><a href="/stocks">STOCKS LIST</a></li>
+            <li><a href="/fiis">FIIs LIST</a></li>
+          </ul>
+        </nav>
+      </div>
+
+  <div class="grid-main">
+    <table>
+      <thead>
+        <th>TICKER</th>
+        <th>PREÇO</th>
+        <th>DY</th>
+        <th>ROE</th>
+        <th>ROA</th>
+        <th>VPA</th>
+      </thead>
+      <tbody>
+        {{#each stockList}}
+        <tr>
+          <td>{{ this.TICKER }}</td>
+          <td>{{ this.PRECO }}</td>
+          <td>{{ this.DY }}</td>
+          <td>{{ this.ROE }}</td>
+          <td>{{ this.ROA }}</td>
+          <td>{{ this.VPA }}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </div>
+  </div>
 </body>
 </html>
