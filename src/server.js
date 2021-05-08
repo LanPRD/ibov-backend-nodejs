@@ -5,6 +5,8 @@ const DownloadCsvFile = require("./services/DownloadCsvFile");
 
 const routes = require("./routes");
 
+const port = 3000;
+
 app
   .use(express.static("public"))
 
@@ -13,9 +15,9 @@ app
 
   .use(routes)
 
-  .listen(3000, async () => {
+  .listen(port, async () => {
     const downloadCsvFile = new DownloadCsvFile();
     await downloadCsvFile.run();
 
-    console.log("Server is running! (:");
+    console.log(`Server is running on port ${port}`);
   });

@@ -18,8 +18,6 @@ fiisRouter.get("/", async (request, response) => {
 
   formatKey(fiiList);
 
-  console.log(fiiList);
-
   return response.render("fiis", { fiiList: fiiList });
 });
 

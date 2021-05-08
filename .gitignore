@@ -8,3 +8,4 @@ test/*.log
 build
 .env
 .DS_Store
+.src/database/
