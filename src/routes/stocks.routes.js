@@ -7,7 +7,7 @@ stocksRouter.get("/", async (request, response) => {
 
   const { stocksList } = await converterCsvFile.listDatas();
 
-  return response.render("stocks", { stockList: stocksList });
+  return response.json({ stockList: stocksList });
 });
 
 module.exports = stocksRouter;

@@ -1,10 +1,27 @@
 const ConverterCsvFile = require("./ConverterCsvFile");
 
 const JSONArray = {
+  maxPriceToFilter: 200,
+  minPriceToFilter: 0,
+  maxDy: 50,
+  maxRoa: 50,
+  maxRoe: 50,
+
   orderByDY(array) {
     let filterDY = [];
 
-    filterDY = array.filter((array) => array.DY.replace(",", ".") < 15);
+    filterDY = array.filter(
+      (array) => array.PRECO.replace(",", ".") < this.maxPriceToFilter
+    );
+
+    filterDY = filterDY.filter(
+      (array) => array.PRECO.replace(",", ".") > this.minPriceToFilter
+    );
+
+    filterDY = filterDY.filter(
+      (array) => array.DY.replace(",", ".") < this.maxDy
+    );
+
     filterDY = filterDY.filter((array) => array.DY.replace(",", ".") != "");
 
     const res = filterDY.sort(
@@ -18,8 +35,19 @@ const JSONArray = {
   orderByROE(array) {
     let filterROE = [];
 
-    filterROE = array.filter((array) => array.ROE.replace(",", ".") != "");
-    filterROE = filterROE.filter((array) => array.ROE.replace(",", ".") < 100);
+    filterROE = array.filter(
+      (array) => array.PRECO.replace(",", ".") < this.maxPriceToFilter
+    );
+
+    filterROE = filterROE.filter(
+      (array) => array.PRECO.replace(",", ".") > this.minPriceToFilter
+    );
+
+    filterROE = filterROE.filter((array) => array.ROE.replace(",", ".") != "");
+
+    filterROE = filterROE.filter(
+      (array) => array.ROE.replace(",", ".") < this.maxRoe
+    );
 
     const res = filterROE.sort(
       (a, b) =>
@@ -33,8 +61,19 @@ const JSONArray = {
   orderByROA(array) {
     let filterROA = [];
 
-    filterROA = array.filter((array) => array.ROA.replace(",", ".") != "");
-    filterROA = filterROA.filter((array) => array.ROA.replace(",", ".") < 11);
+    filterROA = array.filter(
+      (array) => array.PRECO.replace(",", ".") < this.maxPriceToFilter
+    );
+
+    filterROA = filterROA.filter(
+      (array) => array.PRECO.replace(",", ".") > this.minPriceToFilter
+    );
+
+    filterROA = filterROA.filter((array) => array.ROA.replace(",", ".") != "");
+
+    filterROA = filterROA.filter(
+      (array) => array.ROA.replace(",", ".") < this.maxRoa
+    );
 
     const res = filterROA.sort(
       (a, b) =>
@@ -46,13 +85,21 @@ const JSONArray = {
   },
 
   orderByPrice(array) {
-    const res = array
-      .filter((array) => array.PRECO.replace(/\D+/g, "") > 0)
-      .sort(
-        (a, b) =>
-          parseFloat(a.PRECO.replace(".", "").replace(",", ".")) -
-          parseFloat(b.PRECO.replace(".", "").replace(",", "."))
-      );
+    let filteredArray = [];
+
+    filteredArray = array.filter(
+      (array) => array.PRECO.replace(/\D+/g, "") > 0
+    );
+
+    filteredArray = filteredArray.filter(
+      (array) => array.DY.replace(",", ".") < this.maxDy
+    );
+
+    const res = filteredArray.sort(
+      (a, b) =>
+        parseFloat(a.PRECO.replace(".", "").replace(",", ".")) -
+        parseFloat(b.PRECO.replace(".", "").replace(",", "."))
+    );
 
     return JSONArray.topRatios(res, "PRICE");
   },
@@ -67,7 +114,7 @@ const JSONArray = {
     const arrayReceived = array;
     const arrayLength = arrayReceived.length;
     const finalJson = [];
-    const numberShow = 6;
+    const numberShow = 7;
     const stop = arrayLength - numberShow;
 
     if (operator === "DY") {
