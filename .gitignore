@@ -9,4 +9,4 @@ build
 .env
 .DS_Store
 .vscode/
-database/*.csv
+*.csv
