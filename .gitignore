@@ -8,4 +8,5 @@ test/*.log
 build
 .env
 .DS_Store
-src/database/*.csv
+.vscode/
+database/*.csv

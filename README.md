@@ -18,10 +18,10 @@ API to see datas of IBOV and IFIX!
 
 - HTML, CSS, JavaScript
 - NodeJS
-    - [Express](https://expressjs.com/pt-br/api.html)
-    - [HBS](https://handlebarsjs.com/)
-    - [request](https://www.npmjs.com/package/request)
-    - [csvtojson](https://www.npmjs.com/package/csvtojson)
+  - [Express](https://expressjs.com/pt-br/api.html)
+  - [axios](https://www.npmjs.com/package/axios)
+  - [request](https://www.npmjs.com/package/request)
+  - [csvtojson](https://www.npmjs.com/package/csvtojson)
 
 <br>
 
