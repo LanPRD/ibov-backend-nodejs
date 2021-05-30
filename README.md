@@ -1,12 +1,21 @@
-# 🚀 FundamentAções - Under development / Node.js
+# 🚀 Ibov - Node.js
 
-<h1>
-    <img src="public/images/index.PNG">
-</h1>
+## Available Scripts
+
+#### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+<br>
+
+---
+
+<br>
 
 ## 📖 About
 
-API to see datas of IBOV and IFIX!
+API for [IBOV - Frontend - ReactJS](https://github.com/LanPRD/ibov-frontend-reactjs)!
 
 <br>
 
@@ -16,12 +25,12 @@ API to see datas of IBOV and IFIX!
 
 ## 💾 Technologies and resources used
 
-- HTML, CSS, JavaScript
 - NodeJS
-  - [Express](https://expressjs.com/pt-br/api.html)
-  - [axios](https://www.npmjs.com/package/axios)
-  - [request](https://www.npmjs.com/package/request)
+  - [Express](https://expressjs.com/pt-br/)
   - [csvtojson](https://www.npmjs.com/package/csvtojson)
+  - [request](https://www.npmjs.com/package/request)
+  - [axios](https://www.npmjs.com/package/axios)
+- CSV downloaded from [Status Invest](https://statusinvest.com.br/)
 
 <br>
 
@@ -32,7 +41,7 @@ API to see datas of IBOV and IFIX!
 ## 📁 How to download the project
 
 ```bash
-$ git clone https://github.com/LanPRD/ibov
+$ git clone https://github.com/LanPRD/ibov-backend-nodejs.git
 
 $ cd IBOV
 
