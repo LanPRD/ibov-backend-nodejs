@@ -28,7 +28,6 @@ API for [IBOV - Frontend - ReactJS](https://github.com/LanPRD/ibov-frontend-reac
 - NodeJS
   - [Express](https://expressjs.com/pt-br/)
   - [csvtojson](https://www.npmjs.com/package/csvtojson)
-  - [request](https://www.npmjs.com/package/request)
   - [axios](https://www.npmjs.com/package/axios)
 - CSV downloaded from [Status Invest](https://statusinvest.com.br/)
 
