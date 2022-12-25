@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderStyle = styled.header`
+export const HeaderContainer = styled.header`
   grid-area: header;
 
   display: flex;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import api from "../../services/api";
 
-import Footer from "../../components/Footer";
+import { Footer } from "../../components/Footer";
 
 import { Background, Content, PageContainer } from "./styles";
 
@@ -38,6 +38,7 @@ export function Home() {
 
         <Footer />
       </Content>
+
       <Background>
         <section>
           <h1>Welcome to Fundamentações</h1>

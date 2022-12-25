@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FooterStyle = styled.footer`
+export const FooterContainer = styled.footer`
   grid-area: footer;
 
   display: flex;
@@ -8,6 +8,6 @@ export const FooterStyle = styled.footer`
   align-items: center;
 
   p {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 `;

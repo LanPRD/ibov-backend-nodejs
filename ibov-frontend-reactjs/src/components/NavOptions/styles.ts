@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Content = styled.ul`
+export const NavOptionContainer = styled.ul`
   list-style-type: none;
   color: white;
   font-weight: 700;

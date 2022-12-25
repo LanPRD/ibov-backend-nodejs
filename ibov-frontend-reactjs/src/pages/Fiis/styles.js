@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerPage = styled.div`
-  height: 100vh;
+  min-height: 100vh;
 
   display: grid;
   grid-template-rows: 100px 64px auto 1fr 24px;

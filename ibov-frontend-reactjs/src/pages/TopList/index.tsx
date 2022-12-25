@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 import api from "../../services/api";
 
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import NavOptions from "../../components/NavOptions";
+import { Footer } from "../../components/Footer";
+import { Header } from "../../components/Header";
+import { NavOptions } from "../../components/NavOptions";
 import TableTopList from "../../components/TableTopList";
 
 import { ContainerPage, Nav, Section } from "./styles";

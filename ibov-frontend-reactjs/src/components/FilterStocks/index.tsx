@@ -1,39 +1,10 @@
-import React from "react";
-
-import { useFilter } from "../../hooks/FilterContext";
-
 import { FilterStyle } from "./styles";
 
 const Filter = () => {
-  const { setDataToFilter, setClearFilter, clearFilter } = useFilter();
-
-  function filterStocks(event) {
-    event.preventDefault();
-
-    let targetArray = [...event.target];
-    let lastObject = {};
-
-    targetArray.forEach((input) => {
-      if (input.name && input.value) {
-        const createObject = {};
-
-        createObject[input.name] = { value: input.value };
-
-        Object.assign(lastObject, createObject);
-      }
-    });
-
-    setDataToFilter(lastObject);
-  }
-
-  function removeFilter() {
-    setClearFilter(!clearFilter);
-  }
-
   return (
     <FilterStyle>
       <h2>Filters</h2>
-      <form id="filter_stocks" onSubmit={filterStocks}>
+      <form id="filter_stocks">
         <div>
           <p>Ticker</p>
           <label htmlFor="ticker">Ticker</label>
@@ -84,7 +55,7 @@ const Filter = () => {
       <button form="filter_stocks" type="submit">
         Filter
       </button>
-      <button onClick={removeFilter}>Clear Filter</button>
+      <button>Clear Filter</button>
     </FilterStyle>
   );
 };

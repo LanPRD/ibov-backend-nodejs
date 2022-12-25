@@ -8,7 +8,7 @@ import { TopList } from "../pages/TopList";
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" exact element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/toplist" element={<TopList />} />
       <Route path="/stocks" element={<Stocks />} />
       <Route path="/fiis" element={<Fiis />} />
