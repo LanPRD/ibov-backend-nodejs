@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerPage = styled.div`
+export const FiiContainer = styled.div`
   min-height: 100vh;
 
   display: grid;

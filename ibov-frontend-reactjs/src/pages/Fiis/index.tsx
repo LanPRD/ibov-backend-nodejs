@@ -7,32 +7,27 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { NavOptions } from "../../components/NavOptions";
 
-import { ContainerPage, Nav, Table } from "./styles";
+import { IFii } from "../../interfaces/Fii";
+
+import { FiiContainer, Nav, Table } from "./styles";
 
 export function Fiis() {
-  const [infos, setInfos] = useState([]);
+  const [fiis, setFiis] = useState<IFii[]>([]);
 
   useEffect(() => {
-    api.get("/fiis").then((response) => setInfos(response.data.fiiList));
+    api.get("/fiis").then((response) => setFiis(response.data.fiiList));
   }, []);
 
-  if (!infos) {
+  if (!fiis) {
     return <p>Loading...</p>;
   }
 
   return (
-    <ContainerPage>
+    <FiiContainer>
       <Header title="Fiis" />
 
       <Nav>
-        <NavOptions
-          linksName={[
-            { nav: "HOME", to: "/" },
-            ,
-            { nav: "STOCK LIST", to: "/stocks" },
-            { nav: "TOP LIST", to: "/toplist" },
-          ]}
-        />
+        <NavOptions />
       </Nav>
 
       <FilterFiis />
@@ -47,7 +42,7 @@ export function Fiis() {
           </tr>
         </thead>
         <tbody>
-          {infos.map((fii, index) => (
+          {fiis.map((fii, index) => (
             <tr key={index}>
               <td>{fii.ticker}</td>
               <td>{fii.price}</td>
@@ -59,6 +54,6 @@ export function Fiis() {
       </Table>
 
       <Footer />
-    </ContainerPage>
+    </FiiContainer>
   );
 }

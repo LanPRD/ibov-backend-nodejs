@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FilterStyle = styled.div`
+export const FilterContainer = styled.div`
   grid-area: filters;
 
   margin: auto;

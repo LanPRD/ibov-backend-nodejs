@@ -7,20 +7,31 @@ import { Header } from "../../components/Header";
 import { NavOptions } from "../../components/NavOptions";
 import TableTopList from "../../components/TableTopList";
 
-import { ContainerPage, Nav, Section } from "./styles";
+import { IFii } from "../../interfaces/Fii";
+import { IStock } from "../../interfaces/Stock";
+import { Nav, Section, TopListContainer } from "./styles";
+
+interface Infos {
+  bestFiiDY: IFii[];
+  bestFiiPrice: IFii[];
+  bestFiiPvp: IFii[];
+  bestStockDY: IStock[];
+  bestStockROA: IStock[];
+  bestStockROE: IStock[];
+}
 
 export function TopList() {
-  const [infos, setInfos] = useState({});
+  const [infos, setInfos] = useState<Infos>({} as Infos);
 
   useEffect(() => {
     api.get("/list").then(({ data }) => {
       setInfos({
-        bestFiiDY: data.fii.bestDY.slice(0, 6),
-        bestFiiPrice: data.fii.bestPrice.slice(0, 6),
-        bestFiiPvp: data.fii.bestPvp.slice(0, 6),
-        bestStockDY: data.stock.bestDY.slice(0, 6),
-        bestStockROA: data.stock.bestROA.slice(0, 6),
-        bestStockROE: data.stock.bestROE.slice(0, 6),
+        bestFiiDY: data.fii.bestDY.slice(0, 10),
+        bestFiiPrice: data.fii.bestPrice.slice(0, 10),
+        bestFiiPvp: data.fii.bestPvp.slice(0, 10),
+        bestStockDY: data.stock.bestDY.slice(0, 10),
+        bestStockROA: data.stock.bestROA.slice(0, 10),
+        bestStockROE: data.stock.bestROE.slice(0, 10),
       });
     });
   }, []);
@@ -30,16 +41,10 @@ export function TopList() {
   }
 
   return (
-    <ContainerPage>
+    <TopListContainer>
       <Header title="Stocks and FIIs" />
       <Nav>
-        <NavOptions
-          linksName={[
-            { nav: "HOME", to: "/" },
-            { nav: "STOCK LIST", to: "/stocks" },
-            { nav: "FII LIST", to: "/fiis" },
-          ]}
-        />
+        <NavOptions />
       </Nav>
       <main>
         <h1>TOP STOCKS</h1>
@@ -99,6 +104,6 @@ export function TopList() {
         </Section>
       </main>
       <Footer />
-    </ContainerPage>
+    </TopListContainer>
   );
 }

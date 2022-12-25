@@ -7,31 +7,27 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { NavOptions } from "../../components/NavOptions";
 
-import { ContainerPage, Nav, Table } from "./styles";
+import { IStock } from "../../interfaces/Stock";
+
+import { StocksContainer, Nav, Table } from "./styles";
 
 export function Stocks() {
-  const [infos, setInfos] = useState([]);
+  const [stocks, setStocks] = useState<IStock[]>([]);
 
   useEffect(() => {
-    api.get("/stocks").then((response) => setInfos(response.data.stockList));
+    api.get("/stocks").then((response) => setStocks(response.data.stockList));
   }, []);
 
-  if (!infos) {
+  if (!stocks) {
     return <p>Loading...</p>;
   }
 
   return (
-    <ContainerPage>
+    <StocksContainer>
       <Header title="Stocks" />
 
       <Nav>
-        <NavOptions
-          linksName={[
-            { nav: "HOME", to: "/" },
-            { nav: "TOP LIST", to: "/toplist" },
-            { nav: "FII LIST", to: "/fiis" },
-          ]}
-        />
+        <NavOptions />
       </Nav>
 
       <FilterStocks />
@@ -48,7 +44,7 @@ export function Stocks() {
           </tr>
         </thead>
         <tbody>
-          {infos.map((stock, index) => (
+          {stocks.map((stock, index) => (
             <tr key={index}>
               <td>{stock.ticker}</td>
               <td>{stock.price}</td>
@@ -62,6 +58,6 @@ export function Stocks() {
       </Table>
 
       <Footer />
-    </ContainerPage>
+    </StocksContainer>
   );
 }

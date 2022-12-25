@@ -1,0 +1,34 @@
+export interface IStock {
+  companyId?: number;
+  companyName?: string;
+  ticker?: string;
+  price?: number;
+  p_L?: number;
+  dy?: number;
+  p_VP?: number;
+  p_Ebit?: number;
+  p_Ativo?: number;
+  eV_Ebit?: number;
+  margemBruta?: number;
+  margemEbit?: number;
+  margemLiquida?: number;
+  p_SR?: number;
+  p_CapitalGiro?: number;
+  p_AtivoCirculante?: number;
+  giroAtivos?: number;
+  roe?: number;
+  roa?: number;
+  roic?: number;
+  dividaliquidaPatrimonioLiquido?: number;
+  dividaLiquidaEbit?: number;
+  pl_Ativo?: number;
+  passivo_Ativo?: number;
+  liquidezCorrente?: number;
+  peg_Ratio?: number;
+  receitas_Cagr5?: number;
+  lucros_Cagr5?: number;
+  liquidezMediaDiaria?: number;
+  vpa?: number;
+  lpa?: number;
+  valorMercado?: number;
+}

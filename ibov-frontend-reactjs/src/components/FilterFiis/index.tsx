@@ -1,8 +1,8 @@
-import { FilterStyle } from "./styles";
+import { FilterContainer } from "./styles";
 
 const Filter = () => {
   return (
-    <FilterStyle>
+    <FilterContainer>
       <h2>Filters</h2>
       <form id="filter_stocks">
         <div>
@@ -40,7 +40,7 @@ const Filter = () => {
         Filter
       </button>
       <button>Clear Filter</button>
-    </FilterStyle>
+    </FilterContainer>
   );
 };
 
