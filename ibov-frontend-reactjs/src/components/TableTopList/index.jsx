@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Content, Table } from "./styles";
 
 const TableTop = ({ title, header, type, data }) => {
@@ -23,52 +21,52 @@ const TableTop = ({ title, header, type, data }) => {
             <tr key={index}>
               {type === "DY" ? (
                 <>
-                  <td>{data.TICKER}</td>
-                  <td>{data.PRECO}</td>
-                  <td>{data.DY}</td>
+                  <td>{data.ticker}</td>
+                  <td>{data.price}</td>
+                  <td>{data.dy}</td>
                 </>
               ) : null}
 
               {type === "ROA" ? (
                 <>
-                  <td>{data.TICKER}</td>
-                  <td>{data.PRECO}</td>
-                  <td>{data.ROA}</td>
+                  <td>{data.ticker}</td>
+                  <td>{data.price}</td>
+                  <td>{data.roa}</td>
                 </>
               ) : null}
 
               {type === "ROE" ? (
                 <>
-                  <td>{data.TICKER}</td>
-                  <td>{data.PRECO}</td>
-                  <td>{data.ROE}</td>
+                  <td>{data.ticker}</td>
+                  <td>{data.price}</td>
+                  <td>{data.roe}</td>
                 </>
               ) : null}
 
               {type === "DY Fii" ? (
                 <>
-                  <td>{data.TICKER}</td>
-                  <td>{data.PRECO}</td>
-                  <td>{data.DY}</td>
-                  <td>{data.PVP}</td>
+                  <td>{data.ticker}</td>
+                  <td>{data.price}</td>
+                  <td>{data.dy}</td>
+                  <td>{data.p_vp}</td>
                 </>
               ) : null}
 
               {type === "Lowest Price Fii" ? (
                 <>
-                  <td>{data.TICKER}</td>
-                  <td>{data.PRECO}</td>
-                  <td>{data.DY}</td>
-                  <td>{data.PVP}</td>
+                  <td>{data.ticker}</td>
+                  <td>{data.price}</td>
+                  <td>{data.dy}</td>
+                  <td>{data.p_vp}</td>
                 </>
               ) : null}
 
               {type === "P/VP Fii" ? (
                 <>
-                  <td>{data.TICKER}</td>
-                  <td>{data.PRECO}</td>
-                  <td>{data.DY}</td>
-                  <td>{data.PVP}</td>
+                  <td>{data.ticker}</td>
+                  <td>{data.price}</td>
+                  <td>{data.dy}</td>
+                  <td>{data.p_vp}</td>
                 </>
               ) : null}
             </tr>

@@ -31,27 +31,27 @@ export class OrderingFiiController extends OrderingDataController {
     this._data = await this.getData();
   }
 
-  async orderByDY(type: TypeOrdering): Promise<Fii[]> {
-    return this.ascendingOrDescending(
-      this._data.filter(stock => stock.dy && stock.dy > 0).sort((a, b) => b.dy! - a.dy!),
-      type
-    );
+  orderByDY(type: TypeOrdering): Fii[] {
+    return this.ascendingOrDescending(this._data, type, "dy");
   }
 
-  async orderByPrice(type: TypeOrdering): Promise<Fii[]> {
-    return this.ascendingOrDescending(
-      this._data.filter(stock => stock.price && stock.price > 0).sort((a, b) => b.price! - a.price!),
-      type
-    );
+  orderByPrice(type: TypeOrdering): Fii[] {
+    return this.ascendingOrDescending(this._data, type, "price");
   }
 
-  async topRatios() {
-    const bestDY = await this.orderByDY("descending");
-    const bestPrice = await this.orderByPrice("descending");
+  orderByPVP(type: TypeOrdering): Fii[] {
+    return this.ascendingOrDescending(this._data, type, "p_vp");
+  }
+
+  topRatios() {
+    const bestDY = this.orderByDY("descending");
+    const bestPrice = this.orderByPrice("descending");
+    const bestPvp = this.orderByPVP("descending");
 
     return {
       bestDY: bestDY,
-      bestPrice: bestPrice
+      bestPrice: bestPrice,
+      bestPvp: bestPvp
     };
   }
 }

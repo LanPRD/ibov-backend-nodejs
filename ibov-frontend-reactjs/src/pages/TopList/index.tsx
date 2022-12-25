@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import api from "../../services/api";
 
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import NavOptions from "../../components/NavOptions";
 import TableTopList from "../../components/TableTopList";
-import Footer from "../../components/Footer";
 
 import { ContainerPage, Nav, Section } from "./styles";
 
-const TopList = () => {
+export function TopList() {
   const [infos, setInfos] = useState({});
 
   useEffect(() => {
-    api.get("/list").then((reponse) => {
+    api.get("/list").then(({ data }) => {
       setInfos({
-        fiiTopDy: reponse.data.fiiTopDy,
-        fiiTopPrice: reponse.data.fiiTopPrice,
-        fiiTopPvp: reponse.data.fiiTopPvp,
-        stockTopDy: reponse.data.stockTopDy,
-        stockTopRoa: reponse.data.stockTopRoa,
-        stockTopRoe: reponse.data.stockTopRoe,
+        bestFiiDY: data.fii.bestDY.slice(0, 6),
+        bestFiiPrice: data.fii.bestPrice.slice(0, 6),
+        bestFiiPvp: data.fii.bestPvp.slice(0, 6),
+        bestStockDY: data.stock.bestDY.slice(0, 6),
+        bestStockROA: data.stock.bestROA.slice(0, 6),
+        bestStockROE: data.stock.bestROE.slice(0, 6),
       });
     });
   }, []);
@@ -49,7 +49,7 @@ const TopList = () => {
               title="Best D.Y"
               header={["Ticker", "Price", "DY"]}
               type="DY"
-              data={infos.stockTopDy}
+              data={infos.bestStockDY}
             />
           </div>
           <div>
@@ -57,7 +57,7 @@ const TopList = () => {
               title="Best ROA"
               header={["Ticker", "Price", "ROA"]}
               type="ROA"
-              data={infos.stockTopRoa}
+              data={infos.bestStockROA}
             />
           </div>
           <div>
@@ -65,7 +65,7 @@ const TopList = () => {
               title="Best ROE"
               header={["Ticker", "Price", "ROE"]}
               type="ROE"
-              data={infos.stockTopRoe}
+              data={infos.bestStockROE}
             />
           </div>
         </Section>
@@ -77,7 +77,7 @@ const TopList = () => {
               title="Best D.Y"
               header={["Ticker", "Price", "DY", "P/VP"]}
               type="DY Fii"
-              data={infos.fiiTopDy}
+              data={infos.bestFiiDY}
             />
           </div>
           <div>
@@ -85,7 +85,7 @@ const TopList = () => {
               title="Lowest Price"
               header={["Ticker", "Price", "DY", "P/VP"]}
               type="Lowest Price Fii"
-              data={infos.fiiTopPrice}
+              data={infos.bestFiiPrice}
             />
           </div>
           <div>
@@ -93,7 +93,7 @@ const TopList = () => {
               title="Best P/VP"
               header={["Ticker", "Price", "DY", "P/VP"]}
               type="P/VP Fii"
-              data={infos.fiiTopPvp}
+              data={infos.bestFiiPvp}
             />
           </div>
         </Section>
@@ -101,6 +101,4 @@ const TopList = () => {
       <Footer />
     </ContainerPage>
   );
-};
-
-export default TopList;
+}

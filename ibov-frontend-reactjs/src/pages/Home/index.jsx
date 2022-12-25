@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import api from "../../services/api";
 
 import Footer from "../../components/Footer";
 
-import { PageContainer, Content, Background } from "./styles";
+import { Background, Content, PageContainer } from "./styles";
 
-const FirstPage = () => {
+export function Home() {
   const [infos, setInfos] = useState({});
 
   useEffect(() => {
     api.get("/").then((response) => {
       setInfos({
-        totalStocks: response.data.totalAcoes,
-        totalFii: response.data.totalFii,
+        totalStocks: response.data.totalStocks,
+        totalFiis: response.data.totalFiis,
       });
     });
   }, []);
@@ -33,7 +33,7 @@ const FirstPage = () => {
 
         <header>
           <h2>IFIX</h2>
-          <p>{infos.totalFii} FIIs listed</p>
+          <p>{infos.totalFiis} FIIs listed</p>
         </header>
 
         <Footer />
@@ -47,6 +47,4 @@ const FirstPage = () => {
       </Background>
     </PageContainer>
   );
-};
-
-export default FirstPage;
+}

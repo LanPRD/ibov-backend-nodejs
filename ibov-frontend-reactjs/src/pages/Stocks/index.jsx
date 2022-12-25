@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import api from "../../services/api";
 
-import Header from "../../components/Header";
-import NavOptions from "../../components/NavOptions";
 import FilterStocks from "../../components/FilterStocks";
 import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import NavOptions from "../../components/NavOptions";
 
 import { useFilter } from "../../hooks/FilterContext";
 
 import { ContainerPage, Nav, Table } from "./styles";
 
-const Stocks = () => {
+export function Stocks() {
   const { dataToFilter, clearFilter, setDataToFilter } = useFilter();
 
   const [infos, setInfos] = useState([]);
@@ -174,12 +174,12 @@ const Stocks = () => {
             <tbody>
               {infos.map((stock, index) => (
                 <tr key={index}>
-                  <td>{stock.TICKER}</td>
-                  <td>{stock.PRECO}</td>
-                  <td>{stock.DY}</td>
-                  <td>{stock.ROE}</td>
-                  <td>{stock.ROA}</td>
-                  <td>{stock.VPA}</td>
+                  <td>{stock.ticker}</td>
+                  <td>{stock.price}</td>
+                  <td>{stock.dy}</td>
+                  <td>{stock.roe}</td>
+                  <td>{stock.roa}</td>
+                  <td>{stock.vpa}</td>
                 </tr>
               ))}
             </tbody>
@@ -192,6 +192,4 @@ const Stocks = () => {
       <Footer />
     </ContainerPage>
   );
-};
-
-export default Stocks;
+}

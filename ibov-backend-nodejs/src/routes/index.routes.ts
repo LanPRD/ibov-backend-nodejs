@@ -8,8 +8,8 @@ indexRouter.get("/", async (request, response) => {
   const orderingFiiController = OrderingFiiController.getInstance();
   const orderingStockController = OrderingStockController.getInstance();
 
-  const totalFii = orderingFiiController.numberOfFiis;
-  const totalStock = orderingStockController.numberOfStocks;
+  const totalFiis = orderingFiiController.numberOfFiis;
+  const totalStocks = orderingStockController.numberOfStocks;
 
-  return response.json({ totalFii: totalFii, totalStock: totalStock });
+  return response.json({ totalFiis: totalFiis, totalStocks: totalStocks });
 });

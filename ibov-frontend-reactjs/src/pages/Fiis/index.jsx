@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import api from "../../services/api";
 
-import Header from "../../components/Header";
-import NavOptions from "../../components/NavOptions";
 import FilterFiis from "../../components/FilterFiis";
 import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import NavOptions from "../../components/NavOptions";
 
 import { useFilter } from "../../hooks/FilterContext";
 
 import { ContainerPage, Nav, Table } from "./styles";
 
-const Fiis = () => {
+export function Fiis() {
   const { dataToFilter, clearFilter, setDataToFilter } = useFilter();
 
   const [infos, setInfos] = useState([]);
@@ -149,10 +149,10 @@ const Fiis = () => {
             <tbody>
               {infos.map((fii, index) => (
                 <tr key={index}>
-                  <td>{fii.TICKER}</td>
-                  <td>{fii.PRECO}</td>
-                  <td>{fii.DY}</td>
-                  <td>{fii.PVP}</td>
+                  <td>{fii.ticker}</td>
+                  <td>{fii.price}</td>
+                  <td>{fii.dy}</td>
+                  <td>{fii.p_vp}</td>
                 </tr>
               ))}
             </tbody>
@@ -165,6 +165,4 @@ const Fiis = () => {
       <Footer />
     </ContainerPage>
   );
-};
-
-export default Fiis;
+}

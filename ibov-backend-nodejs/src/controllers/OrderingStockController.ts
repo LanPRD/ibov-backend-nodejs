@@ -31,47 +31,32 @@ export class OrderingStockController extends OrderingDataController {
     this._data = await this.getData();
   }
 
-  async orderByROE(type: TypeOrdering): Promise<Stock[]> {
-    return this.ascendingOrDescending(
-      this._data.filter(stock => stock.roe && stock.roe > 0).sort((a, b) => b.roe! - a.roe!),
-      type
-    );
+  orderByROE(type: TypeOrdering): Stock[] {
+    return this.ascendingOrDescending(this._data, type, "roe");
   }
 
-  async orderByROA(type: TypeOrdering): Promise<Stock[]> {
-    return this.ascendingOrDescending(
-      this._data.filter(stock => stock.roa && stock.roa > 0).sort((a, b) => b.roa! - a.roa!),
-      type
-    );
+  orderByROA(type: TypeOrdering): Stock[] {
+    return this.ascendingOrDescending(this._data, type, "roa");
   }
 
-  async orderByPVP(type: TypeOrdering): Promise<Stock[]> {
-    return this.ascendingOrDescending(
-      this._data.filter(stock => stock.p_VP && stock.p_VP > 0).sort((a, b) => b.p_VP! - a.p_VP!),
-      type
-    );
+  orderByPVP(type: TypeOrdering): Stock[] {
+    return this.ascendingOrDescending(this._data, type, "p_VP");
   }
 
-  async orderByDY(type: TypeOrdering): Promise<Stock[]> {
-    return this.ascendingOrDescending(
-      this._data.filter(stock => stock.dy && stock.dy > 0).sort((a, b) => b.dy! - a.dy!),
-      type
-    );
+  orderByDY(type: TypeOrdering): Stock[] {
+    return this.ascendingOrDescending(this._data, type, "dy");
   }
 
-  async orderByPrice(type: TypeOrdering): Promise<Stock[]> {
-    return this.ascendingOrDescending(
-      this._data.filter(stock => stock.price && stock.price > 0).sort((a, b) => b.price! - a.price!),
-      type
-    );
+  orderByPrice(type: TypeOrdering): Stock[] {
+    return this.ascendingOrDescending(this._data, type, "price");
   }
 
-  async topRatios() {
-    const bestROE = await this.orderByROE("descending");
-    const bestROA = await this.orderByROA("descending");
-    const bestPVP = await this.orderByPVP("descending");
-    const bestDY = await this.orderByDY("descending");
-    const bestPrice = await this.orderByPrice("descending");
+  topRatios() {
+    const bestROE = this.orderByROE("descending");
+    const bestROA = this.orderByROA("descending");
+    const bestPVP = this.orderByPVP("descending");
+    const bestDY = this.orderByDY("descending");
+    const bestPrice = this.orderByPrice("descending");
 
     return {
       bestROE: bestROE,

@@ -3,12 +3,13 @@ export type TypeOrdering = "ascending" | "descending";
 export class OrderingDataController {
   constructor() {}
 
-  protected ascendingOrDescending(array: any[], type: TypeOrdering) {
-    const order = {
-      ascending: array.reverse(),
-      descending: array
-    };
+  ascendingOrDescending(array: any[], type: TypeOrdering, key: string) {
+    const arrayFiltered = array.filter(data => (data[key] && data[key] > 0) || (data[key] && data[key] !== ""));
 
-    return order[type];
+    if (type === "ascending") {
+      return arrayFiltered.sort((a, b) => a[key] - b[key]);
+    }
+
+    return arrayFiltered.sort((a, b) => b[key] - a[key]);
   }
 }

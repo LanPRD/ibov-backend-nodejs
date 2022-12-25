@@ -4,12 +4,12 @@ import { OrderingStockController } from "../controllers/OrderingStockController"
 
 export const listRouter = Router();
 
-listRouter.get("/", async (request, response) => {
-  const orderingFiiController = OrderingFiiController.getInstance();
+listRouter.get("/", (request, response) => {
   const orderingStockController = OrderingStockController.getInstance();
+  const orderingFiiController = OrderingFiiController.getInstance();
 
-  const fiiTopRatios = await orderingFiiController.topRatios();
-  const stockTopRatios = await orderingStockController.topRatios();
+  const stockTopRatios = orderingStockController.topRatios();
+  const fiiTopRatios = orderingFiiController.topRatios();
 
   return response.json({
     fii: fiiTopRatios,

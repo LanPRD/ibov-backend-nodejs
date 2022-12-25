@@ -1,15 +1,14 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import FirstPage from "../pages/FirstPage";
-import TopList from "../pages/TopList";
-import Stocks from "../pages/Stocks";
-import Fiis from "../pages/Fiis";
+import { Fiis } from "../pages/Fiis";
+import { Home } from "../pages/Home";
+import { Stocks } from "../pages/Stocks";
+import { TopList } from "../pages/TopList";
 
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" exact element={<FirstPage />} />
+      <Route path="/" exact element={<Home />} />
       <Route path="/toplist" element={<TopList />} />
       <Route path="/stocks" element={<Stocks />} />
       <Route path="/fiis" element={<Fiis />} />
