@@ -9,7 +9,7 @@ import { NavOptions } from "../../components/NavOptions";
 
 import { IFii } from "../../interfaces/Fii";
 
-import { FiiContainer, Nav, Table } from "./styles";
+import { FiiContainer, Table } from "./styles";
 
 export function Fiis() {
   const [fiis, setFiis] = useState<IFii[]>([]);
@@ -26,9 +26,7 @@ export function Fiis() {
     <FiiContainer>
       <Header title="Fiis" />
 
-      <Nav>
-        <NavOptions />
-      </Nav>
+      <NavOptions />
 
       <FilterFiis />
 

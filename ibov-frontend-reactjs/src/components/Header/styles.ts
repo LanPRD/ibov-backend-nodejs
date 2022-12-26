@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  grid-area: header;
+  min-height: 104px;
+
+  margin-bottom: 32px;
 
   display: flex;
   justify-content: center;

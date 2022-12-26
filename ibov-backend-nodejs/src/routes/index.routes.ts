@@ -4,7 +4,7 @@ import { OrderingStockController } from "../controllers/OrderingStockController"
 
 export const indexRouter = Router();
 
-indexRouter.get("/", async (request, response) => {
+indexRouter.get("/", (request, response) => {
   const orderingFiiController = OrderingFiiController.getInstance();
   const orderingStockController = OrderingStockController.getInstance();
 

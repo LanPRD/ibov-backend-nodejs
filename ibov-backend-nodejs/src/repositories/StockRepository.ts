@@ -1,10 +1,11 @@
 import axios from "axios";
-import { Stock } from "../models/Stock";
-import { BaseRepository } from "./BaseRepository";
+import qs from "qs";
 import { StockFilter, StockFilterProps } from "../constants/filters";
-import { IIbovRepository } from "./interfaces";
+import { DTOStock } from "../dtos/DTOStock";
+import { BaseRepository } from "./BaseRepository";
+import { IStockRepository } from "./interfaces";
 
-export class StockRepository extends BaseRepository implements IIbovRepository {
+export class StockRepository extends BaseRepository implements IStockRepository {
   private _stockFilter = JSON.stringify(StockFilter).trim();
 
   public set stockFilter(filters: StockFilterProps) {
@@ -15,17 +16,34 @@ export class StockRepository extends BaseRepository implements IIbovRepository {
     return JSON.parse(this._stockFilter);
   }
 
-  async getAll(): Promise<Stock[]> {
-    const { data } = await axios.get(`${StockRepository.baseUrl}?search=${encodeURIComponent(this._stockFilter)}`, {
+  async getAll(): Promise<DTOStock[]> {
+    const { data } = await axios.get(`${StockRepository.listAllUrl}?search=${encodeURIComponent(this._stockFilter)}`, {
       method: "GET",
-      headers: StockRepository._headers,
+      headers: StockRepository.headers,
       params: {
-        CategoryType: StockRepository._stockId
+        CategoryType: StockRepository.stockId
       }
     });
 
-    // console.log(data);
-
     return data;
+  }
+
+  async findOne(ticker: string): Promise<DTOStock> {
+    try {
+      const { data } = await axios.get(StockRepository.indicatorHistoricalListUrl, {
+        method: "POST",
+        headers: { ...StockRepository.headers, "Content-Type": "application/x-www-form-urlencoded" },
+        data: qs.stringify({
+          "codes[]": ticker,
+          time: 7,
+          byQuarter: false,
+          futureData: false
+        })
+      });
+
+      return data.data[ticker];
+    } catch (error) {
+      throw error;
+    }
   }
 }

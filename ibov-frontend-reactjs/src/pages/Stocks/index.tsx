@@ -9,7 +9,7 @@ import { NavOptions } from "../../components/NavOptions";
 
 import { IStock } from "../../interfaces/Stock";
 
-import { StocksContainer, Nav, Table } from "./styles";
+import { StocksContainer, Table } from "./styles";
 
 export function Stocks() {
   const [stocks, setStocks] = useState<IStock[]>([]);
@@ -26,9 +26,7 @@ export function Stocks() {
     <StocksContainer>
       <Header title="Stocks" />
 
-      <Nav>
-        <NavOptions />
-      </Nav>
+      <NavOptions />
 
       <FilterStocks />
 

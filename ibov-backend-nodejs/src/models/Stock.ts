@@ -1,38 +1,71 @@
+import { DTOStock } from "../dtos/DTOStock";
+
 export class Stock {
-  public readonly companyId?: number;
-  public readonly companyName?: string;
+  public readonly company_id?: number;
+  public readonly company_name?: string;
   public readonly ticker?: string;
   public readonly price?: number;
-  public readonly p_L?: number;
   public readonly dy?: number;
-  public readonly p_VP?: number;
-  public readonly p_Ebit?: number;
-  public readonly p_Ativo?: number;
-  public readonly eV_Ebit?: number;
-  public readonly margemBruta?: number;
-  public readonly margemEbit?: number;
-  public readonly margemLiquida?: number;
-  public readonly p_SR?: number;
-  public readonly p_CapitalGiro?: number;
-  public readonly p_AtivoCirculante?: number;
-  public readonly giroAtivos?: number;
+  public readonly preco_lucro?: number;
+  public readonly preco_valor_patrimonial?: number;
+  public readonly preco_ebit?: number;
+  public readonly preco_ativo?: number;
+  public readonly ev_ebit?: number;
+  public readonly margem_bruta?: number;
+  public readonly margem_ebit?: number;
+  public readonly margem_liquida?: number;
+  public readonly preco_sr?: number;
+  public readonly preco_capital_giro?: number;
+  public readonly preco_ativo_circulante?: number;
+  public readonly giro_ativos?: number;
   public readonly roe?: number;
   public readonly roa?: number;
   public readonly roic?: number;
-  public readonly dividaliquidaPatrimonioLiquido?: number;
-  public readonly dividaLiquidaEbit?: number;
-  public readonly pl_Ativo?: number;
-  public readonly passivo_Ativo?: number;
-  public readonly liquidezCorrente?: number;
-  public readonly peg_Ratio?: number;
-  public readonly receitas_Cagr5?: number;
-  public readonly lucros_Cagr5?: number;
-  public readonly liquidezMediaDiaria?: number;
+  public readonly divida_liquida_patrimonio_liquido?: number;
+  public readonly divida_liquida_ebit?: number;
+  public readonly pl_ativo?: number;
+  public readonly passivo_ativo?: number;
+  public readonly liquidez_corrente?: number;
+  public readonly peg_ratio?: number;
+  public readonly receitas_cagr5?: number;
+  public readonly lucros_cagr5?: number;
+  public readonly liquidez_media_diaria?: number;
   public readonly vpa?: number;
   public readonly lpa?: number;
-  public readonly valorMercado?: number;
+  public readonly valor_mercado?: number;
 
-  constructor(props: Stock) {
-    Object.assign(this, props); // attribute each object from props to this.
+  constructor(props: DTOStock) {
+    this.company_id = props["companyId"];
+    this.company_name = props["companyName"];
+    this.ticker = props["ticker"];
+    this.price = props["price"];
+    this.dy = props["dy"];
+    this.preco_lucro = props["p_L"];
+    this.preco_valor_patrimonial = props["p_VP"];
+    this.preco_ebit = props["p_Ebit"];
+    this.preco_ativo = props["p_Ativo"];
+    this.ev_ebit = props["eV_Ebit"];
+    this.margem_bruta = props["margemBruta"];
+    this.margem_ebit = props["margemEbit"];
+    this.margem_liquida = props["margemLiquida"];
+    this.preco_sr = props["p_SR"];
+    this.preco_capital_giro = props["p_CapitalGiro"];
+    this.preco_ativo_circulante = props["p_AtivoCirculante"];
+    this.giro_ativos = props["giroAtivos"];
+    this.roe = props["roe"];
+    this.roa = props["roa"];
+    this.roic = props["roic"];
+    this.divida_liquida_patrimonio_liquido = props["dividaliquidaPatrimonioLiquido"];
+    this.divida_liquida_ebit = props["dividaLiquidaEbit"];
+    this.pl_ativo = props["pl_Ativo"];
+    this.passivo_ativo = props["passivo_Ativo"];
+    this.liquidez_corrente = props["liquidezCorrente"];
+    this.peg_ratio = props["peg_Ratio"];
+    this.receitas_cagr5 = props["receitas_Cagr5"];
+    this.lucros_cagr5 = props["lucros_Cagr5"];
+    this.liquidez_media_diaria = props["liquidezMediaDiaria"];
+    this.vpa = props["vpa"];
+    this.lpa = props["lpa"];
+    this.valor_mercado = props["valorMercado"];
   }
 }

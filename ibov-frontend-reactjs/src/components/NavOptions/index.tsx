@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { NavOptionContainer } from "./styles.js";
+import { NavOptionContainer, NavOption } from "./styles";
 
 const links = [
   { nav: "HOME", to: "/" },
@@ -12,11 +12,13 @@ const links = [
 export function NavOptions() {
   return (
     <NavOptionContainer>
-      {links.map((linkName, index) => (
-        <li key={index}>
-          <Link to={linkName.to}>{linkName.nav}</Link>
-        </li>
-      ))}
+      <NavOption>
+        {links.map((linkName, index) => (
+          <li key={index}>
+            <Link to={linkName.to}>{linkName.nav}</Link>
+          </li>
+        ))}
+      </NavOption>
     </NavOptionContainer>
   );
 }

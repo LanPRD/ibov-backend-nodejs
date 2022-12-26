@@ -1,13 +1,13 @@
-import { Stock } from "../models/Stock";
-import { IIbovRepository } from "../repositories/interfaces";
+import { DTOStock } from "../dtos/DTOStock";
+import { IStockRepository } from "../repositories/interfaces";
 import { StockRepository } from "../repositories/StockRepository";
 import { OrderingDataController, TypeOrdering } from "./OrderingDatasController";
 
 export class OrderingStockController extends OrderingDataController {
-  private _data: Stock[] = [];
+  private _data: DTOStock[] = [];
   private static instance: OrderingStockController;
 
-  private constructor(private ibovRepository: IIbovRepository) {
+  private constructor(private stockRepository: IStockRepository) {
     super();
   }
 
@@ -23,31 +23,31 @@ export class OrderingStockController extends OrderingDataController {
     return OrderingStockController.instance;
   }
 
-  async getData(): Promise<Stock[]> {
-    return (await this.ibovRepository.getAll()) as Stock[];
+  async getData(): Promise<DTOStock[]> {
+    return await this.stockRepository.getAll();
   }
 
   async buildController() {
     this._data = await this.getData();
   }
 
-  orderByROE(type: TypeOrdering): Stock[] {
+  orderByROE(type: TypeOrdering): DTOStock[] {
     return this.ascendingOrDescending(this._data, type, "roe");
   }
 
-  orderByROA(type: TypeOrdering): Stock[] {
+  orderByROA(type: TypeOrdering): DTOStock[] {
     return this.ascendingOrDescending(this._data, type, "roa");
   }
 
-  orderByPVP(type: TypeOrdering): Stock[] {
+  orderByPVP(type: TypeOrdering): DTOStock[] {
     return this.ascendingOrDescending(this._data, type, "p_VP");
   }
 
-  orderByDY(type: TypeOrdering): Stock[] {
+  orderByDY(type: TypeOrdering): DTOStock[] {
     return this.ascendingOrDescending(this._data, type, "dy");
   }
 
-  orderByPrice(type: TypeOrdering): Stock[] {
+  orderByPrice(type: TypeOrdering): DTOStock[] {
     return this.ascendingOrDescending(this._data, type, "price");
   }
 

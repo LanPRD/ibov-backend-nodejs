@@ -5,11 +5,11 @@ import api from "../../services/api";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { NavOptions } from "../../components/NavOptions";
-import TableTopList from "../../components/TableTopList";
+import { TableTop } from "../../components/TableTop";
 
 import { IFii } from "../../interfaces/Fii";
 import { IStock } from "../../interfaces/Stock";
-import { Nav, Section, TopListContainer } from "./styles";
+import { TopListContainer, TopListSection } from "./styles";
 
 interface Infos {
   bestFiiDY: IFii[];
@@ -43,66 +43,61 @@ export function TopList() {
   return (
     <TopListContainer>
       <Header title="Stocks and FIIs" />
-      <Nav>
-        <NavOptions />
-      </Nav>
-      <main>
-        <h1>TOP STOCKS</h1>
-        <Section>
-          <div>
-            <TableTopList
-              title="Best D.Y"
-              header={["Ticker", "Price", "DY"]}
-              type="DY"
-              data={infos.bestStockDY}
-            />
-          </div>
-          <div>
-            <TableTopList
-              title="Best ROA"
-              header={["Ticker", "Price", "ROA"]}
-              type="ROA"
-              data={infos.bestStockROA}
-            />
-          </div>
-          <div>
-            <TableTopList
-              title="Best ROE"
-              header={["Ticker", "Price", "ROE"]}
-              type="ROE"
-              data={infos.bestStockROE}
-            />
-          </div>
-        </Section>
 
-        <h1>TOP FIIS</h1>
-        <Section>
-          <div>
-            <TableTopList
-              title="Best D.Y"
-              header={["Ticker", "Price", "DY", "P/VP"]}
-              type="DY Fii"
-              data={infos.bestFiiDY}
-            />
-          </div>
-          <div>
-            <TableTopList
-              title="Lowest Price"
-              header={["Ticker", "Price", "DY", "P/VP"]}
-              type="Lowest Price Fii"
-              data={infos.bestFiiPrice}
-            />
-          </div>
-          <div>
-            <TableTopList
-              title="Best P/VP"
-              header={["Ticker", "Price", "DY", "P/VP"]}
-              type="P/VP Fii"
-              data={infos.bestFiiPvp}
-            />
-          </div>
-        </Section>
+      <NavOptions />
+
+      <main>
+        <h2>TOP STOCKS</h2>
+
+        <TopListSection>
+          <TableTop
+            title="Best D.Y"
+            header={["Ticker", "Price", "DY"]}
+            type="DY"
+            data={infos.bestStockDY}
+          />
+
+          <TableTop
+            title="Best ROA"
+            header={["Ticker", "Price", "ROA"]}
+            type="ROA"
+            data={infos.bestStockROA}
+          />
+
+          <TableTop
+            title="Best ROE"
+            header={["Ticker", "Price", "ROE"]}
+            type="ROE"
+            data={infos.bestStockROE}
+          />
+        </TopListSection>
+
+        <h2>TOP FIIS</h2>
+
+        <TopListSection>
+          <TableTop
+            title="Best D.Y"
+            header={["Ticker", "Price", "DY", "P/VP"]}
+            type="DY Fii"
+            data={infos.bestFiiDY}
+          />
+
+          <TableTop
+            title="Lowest Price"
+            header={["Ticker", "Price", "DY", "P/VP"]}
+            type="Lowest Price Fii"
+            data={infos.bestFiiPrice}
+          />
+
+          <TableTop
+            title="Best P/VP"
+            header={["Ticker", "Price", "DY", "P/VP"]}
+            type="P/VP Fii"
+            data={infos.bestFiiPvp}
+          />
+        </TopListSection>
       </main>
+
       <Footer />
     </TopListContainer>
   );

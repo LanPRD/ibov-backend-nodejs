@@ -1,13 +1,13 @@
-import { Fii } from "../models/Fii";
+import { DTOFii } from "../dtos/DTOFii";
 import { FiiRepository } from "../repositories/FiiRepository";
-import { IIbovRepository } from "../repositories/interfaces";
+import { IFiiRepository } from "../repositories/interfaces";
 import { OrderingDataController, TypeOrdering } from "./OrderingDatasController";
 
 export class OrderingFiiController extends OrderingDataController {
-  private _data: Fii[] = [];
+  private _data: DTOFii[] = [];
   private static instance: OrderingFiiController;
 
-  private constructor(private ibovRepository: IIbovRepository) {
+  private constructor(private fiiRepository: IFiiRepository) {
     super();
   }
 
@@ -23,23 +23,23 @@ export class OrderingFiiController extends OrderingDataController {
     return OrderingFiiController.instance;
   }
 
-  async getData(): Promise<Fii[]> {
-    return (await this.ibovRepository.getAll()) as Fii[];
+  async getData(): Promise<DTOFii[]> {
+    return await this.fiiRepository.getAll();
   }
 
   async buildController() {
     this._data = await this.getData();
   }
 
-  orderByDY(type: TypeOrdering): Fii[] {
+  orderByDY(type: TypeOrdering): DTOFii[] {
     return this.ascendingOrDescending(this._data, type, "dy");
   }
 
-  orderByPrice(type: TypeOrdering): Fii[] {
+  orderByPrice(type: TypeOrdering): DTOFii[] {
     return this.ascendingOrDescending(this._data, type, "price");
   }
 
-  orderByPVP(type: TypeOrdering): Fii[] {
+  orderByPVP(type: TypeOrdering): DTOFii[] {
     return this.ascendingOrDescending(this._data, type, "p_vp");
   }
 

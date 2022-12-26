@@ -13,14 +13,6 @@ export const FiiContainer = styled.div`
     "footer";
 `;
 
-export const Nav = styled.nav`
-  grid-area: nav;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const Table = styled.table`
   margin: 24px auto 0;
   min-width: 760px;

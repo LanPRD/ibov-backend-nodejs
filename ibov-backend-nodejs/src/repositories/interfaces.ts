@@ -1,6 +1,12 @@
-import { Fii } from "../models/Fii";
-import { Stock } from "../models/Stock";
+import { DTOFii } from "../dtos/DTOFii";
+import { DTOStock } from "../dtos/DTOStock";
 
-export interface IIbovRepository {
-  getAll(): Promise<Stock[] | Fii[]>;
+export interface IStockRepository {
+  getAll(): Promise<DTOStock[]>;
+  findOne(ticker: string): Promise<DTOStock>;
+}
+
+export interface IFiiRepository {
+  getAll(): Promise<DTOFii[]>;
+  findOne(ticker: string): Promise<DTOFii>;
 }

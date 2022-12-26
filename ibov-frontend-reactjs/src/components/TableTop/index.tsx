@@ -1,14 +1,24 @@
-import { Content, Table } from "./styles";
+import { IFii } from "../../interfaces/Fii";
+import { IStock } from "../../interfaces/Stock";
+import { TableTopContainer, TableContent } from "./styles";
 
-const TableTop = ({ title, header, type, data }) => {
+interface TableTopProps {
+  title: string;
+  header: string[];
+  type: string;
+  data: IFii[] | IStock[];
+}
+
+export function TableTop({ title, header, type, data }: TableTopProps) {
   if (!data) {
     return <p>Loading ...</p>;
   }
 
   return (
-    <Content>
-      <h1>{title}</h1>
-      <Table>
+    <TableTopContainer>
+      <h3>{title}</h3>
+
+      <TableContent>
         <thead>
           <tr>
             {header.map((header, index) => (
@@ -16,65 +26,64 @@ const TableTop = ({ title, header, type, data }) => {
             ))}
           </tr>
         </thead>
+
         <tbody>
           {data.map((data, index) => (
             <tr key={index}>
-              {type === "DY" ? (
+              {type === "DY" && (
                 <>
                   <td>{data.ticker}</td>
                   <td>{data.price}</td>
                   <td>{data.dy}</td>
                 </>
-              ) : null}
+              )}
 
-              {type === "ROA" ? (
+              {type === "ROA" && (
                 <>
                   <td>{data.ticker}</td>
                   <td>{data.price}</td>
                   <td>{data.roa}</td>
                 </>
-              ) : null}
+              )}
 
-              {type === "ROE" ? (
+              {type === "ROE" && (
                 <>
                   <td>{data.ticker}</td>
                   <td>{data.price}</td>
                   <td>{data.roe}</td>
                 </>
-              ) : null}
+              )}
 
-              {type === "DY Fii" ? (
+              {type === "DY Fii" && (
                 <>
                   <td>{data.ticker}</td>
                   <td>{data.price}</td>
                   <td>{data.dy}</td>
                   <td>{data.p_vp}</td>
                 </>
-              ) : null}
+              )}
 
-              {type === "Lowest Price Fii" ? (
+              {type === "Lowest Price Fii" && (
                 <>
                   <td>{data.ticker}</td>
                   <td>{data.price}</td>
                   <td>{data.dy}</td>
                   <td>{data.p_vp}</td>
                 </>
-              ) : null}
+              )}
 
-              {type === "P/VP Fii" ? (
+              {type === "P/VP Fii" && (
                 <>
                   <td>{data.ticker}</td>
                   <td>{data.price}</td>
                   <td>{data.dy}</td>
                   <td>{data.p_vp}</td>
                 </>
-              ) : null}
+              )}
             </tr>
           ))}
         </tbody>
-      </Table>
-    </Content>
+      </TableContent>
+    </TableTopContainer>
   );
-};
-
-export default TableTop;
+}

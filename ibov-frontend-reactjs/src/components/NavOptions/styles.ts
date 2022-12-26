@@ -1,18 +1,17 @@
 import styled from "styled-components";
 
-export const NavOptionContainer = styled.ul`
+export const NavOption = styled.ul`
   list-style-type: none;
   color: white;
   font-weight: 700;
 
   background: #4bebd0;
   border: 1px solid #4bebd0;
-  border-radius: 16px;
+  border-radius: 12px;
 
   padding: 16px 56px;
 
   display: flex;
-
   justify-content: space-between;
 
   @media (min-width: 760px) {
@@ -51,4 +50,12 @@ export const NavOptionContainer = styled.ul`
       text-decoration: underline;
     }
   }
+`;
+
+export const NavOptionContainer = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 32px;
 `;

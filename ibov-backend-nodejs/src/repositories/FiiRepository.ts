@@ -1,9 +1,11 @@
 import axios from "axios";
-import { BaseRepository } from "./BaseRepository";
+import qs from "qs";
 import { FiiFilter, FiiFilterProps } from "../constants/filters";
-import { Fii } from "../models/Fii";
+import { DTOFii } from "../dtos/DTOFii";
+import { BaseRepository } from "./BaseRepository";
+import { IFiiRepository } from "./interfaces";
 
-export class FiiRepository extends BaseRepository {
+export class FiiRepository extends BaseRepository implements IFiiRepository {
   private _fiiFilter = JSON.stringify(FiiFilter).trim();
 
   public set fiiFilter(filters: FiiFilterProps) {
@@ -14,17 +16,38 @@ export class FiiRepository extends BaseRepository {
     return JSON.parse(this._fiiFilter);
   }
 
-  async getAll(): Promise<Fii[]> {
-    const { data } = await axios.get(`${FiiRepository.baseUrl}?search=${encodeURIComponent(this._fiiFilter)}`, {
+  async getAll(): Promise<DTOFii[]> {
+    const { data } = await axios.get(`${FiiRepository.listAllUrl}?search=${encodeURIComponent(this._fiiFilter)}`, {
       method: "GET",
-      headers: FiiRepository._headers,
+      headers: FiiRepository.headers,
       params: {
-        CategoryType: FiiRepository._fiiId
+        CategoryType: FiiRepository.fiiId
       }
     });
 
-    // console.log(data);
-
     return data;
+  }
+
+  async findOne(ticker: string): Promise<DTOFii> {
+    console.log(ticker);
+
+    try {
+      const { data } = await axios.get(FiiRepository.fiiIndicatorHistoricalListUrl, {
+        method: "POST",
+        headers: { ...FiiRepository.headers, "Content-Type": "application/x-www-form-urlencoded" },
+        data: qs.stringify({
+          "codes[]": ticker,
+          time: 0,
+          byQuarter: false,
+          futureData: false
+        })
+      });
+
+      console.log(data);
+
+      return data.data[ticker];
+    } catch (error) {
+      throw error;
+    }
   }
 }
