@@ -1,7 +1,7 @@
 export class BaseRepository {
   private static readonly _baseUrl: string = "https://statusinvest.com.br";
   protected static readonly listAllUrl: string = `${this._baseUrl}/category/advancedsearchresult`;
-  protected static readonly indicatorHistoricalListUrl: string = `${this._baseUrl}/acao/indicatorhistoricallist`;
+  protected static readonly stockIndicatorHistoricalListUrl: string = `${this._baseUrl}/acao/indicatorhistoricallist`;
   protected static readonly fiiIndicatorHistoricalListUrl: string = `${this._baseUrl}/fii/indicatorhistoricallist`;
   protected static stockId: number = 1;
   protected static fiiId: number = 2;

@@ -2,6 +2,7 @@ import axios from "axios";
 import qs from "qs";
 import { StockFilter, StockFilterProps } from "../constants/filters";
 import { DTOStock } from "../dtos/DTOStock";
+import { AppError } from "../utils/Error";
 import { BaseRepository } from "./BaseRepository";
 import { IStockRepository } from "./interfaces";
 
@@ -30,7 +31,7 @@ export class StockRepository extends BaseRepository implements IStockRepository 
 
   async findOne(ticker: string): Promise<DTOStock> {
     try {
-      const { data } = await axios.get(StockRepository.indicatorHistoricalListUrl, {
+      const { data } = await axios.get(StockRepository.stockIndicatorHistoricalListUrl, {
         method: "POST",
         headers: { ...StockRepository.headers, "Content-Type": "application/x-www-form-urlencoded" },
         data: qs.stringify({
@@ -41,9 +42,13 @@ export class StockRepository extends BaseRepository implements IStockRepository 
         })
       });
 
-      return data.data[ticker];
+      if (data.success) {
+        return data.data[ticker];
+      }
+
+      throw new AppError("Código (Ticker) inválido", 400);
     } catch (error) {
-      throw error;
+      throw new AppError("Internal server error", 500);
     }
   }
 }

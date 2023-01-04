@@ -1,10 +1,10 @@
-import { DTOStock } from "../dtos/DTOStock";
+import { Stock } from "../models/Stock";
 import { IStockRepository } from "../repositories/interfaces";
 import { StockRepository } from "../repositories/StockRepository";
 import { OrderingDataController, TypeOrdering } from "./OrderingDatasController";
 
 export class OrderingStockController extends OrderingDataController {
-  private _data: DTOStock[] = [];
+  private _data: Stock[] = [];
   private static instance: OrderingStockController;
 
   private constructor(private stockRepository: IStockRepository) {
@@ -23,31 +23,43 @@ export class OrderingStockController extends OrderingDataController {
     return OrderingStockController.instance;
   }
 
-  async getData(): Promise<DTOStock[]> {
-    return await this.stockRepository.getAll();
+  async getData(): Promise<Stock[]> {
+    try {
+      const dtoStockList = await this.stockRepository.getAll();
+      const stockist: Stock[] = [];
+
+      for (const dtoStock of dtoStockList) {
+        stockist.push(new Stock(dtoStock));
+      }
+
+      return stockist;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   async buildController() {
     this._data = await this.getData();
   }
 
-  orderByROE(type: TypeOrdering): DTOStock[] {
+  orderByROE(type: TypeOrdering): Stock[] {
     return this.ascendingOrDescending(this._data, type, "roe");
   }
 
-  orderByROA(type: TypeOrdering): DTOStock[] {
+  orderByROA(type: TypeOrdering): Stock[] {
     return this.ascendingOrDescending(this._data, type, "roa");
   }
 
-  orderByPVP(type: TypeOrdering): DTOStock[] {
+  orderByPVP(type: TypeOrdering): Stock[] {
     return this.ascendingOrDescending(this._data, type, "p_VP");
   }
 
-  orderByDY(type: TypeOrdering): DTOStock[] {
+  orderByDY(type: TypeOrdering): Stock[] {
     return this.ascendingOrDescending(this._data, type, "dy");
   }
 
-  orderByPrice(type: TypeOrdering): DTOStock[] {
+  orderByPrice(type: TypeOrdering): Stock[] {
     return this.ascendingOrDescending(this._data, type, "price");
   }
 

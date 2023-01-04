@@ -2,6 +2,7 @@ import { Router } from "express";
 import { OrderingStockController } from "../controllers/OrderingStockController";
 import { StockController } from "../controllers/StockController";
 import { StockRepository } from "../repositories/StockRepository";
+import { AppError } from "../utils/Error";
 
 const stockController = new StockController(new StockRepository());
 
@@ -18,7 +19,14 @@ stocksRouter.get("/", async (request, response) => {
 stocksRouter.post("/:ticker", async (request, response) => {
   const ticker = request.params.ticker;
 
-  const stock = await stockController.findOne(ticker);
+  try {
+    const stock = await stockController.findOne(ticker);
+    return response.json(stock);
+  } catch (error) {
+    console.trace(error);
 
-  return response.json(stock);
+    const errorCode = error.statusCode ?? 500;
+
+    return response.status(errorCode).json({ statusCode: errorCode, message: error.message });
+  }
 });

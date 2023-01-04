@@ -8,7 +8,7 @@ test/*.log
 build
 .env
 .DS_Store
-.vscode/
+# .vscode/
 *.csv
 !database/.gitkeep
 *.lock
